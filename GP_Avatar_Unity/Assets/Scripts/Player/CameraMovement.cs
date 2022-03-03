@@ -9,8 +9,8 @@ public class CameraMovement : MonoBehaviour
     private GameObject _cameraTarget;
 
     public float camRotationSpeed = 7;
-    public float minVerticalAngle = 40;
-    public float maxVerticalAngle = 340;
+    public float minVerticalAngle = 20;
+    public float maxVerticalAngle = 320;
 
     private void Awake()
     {
