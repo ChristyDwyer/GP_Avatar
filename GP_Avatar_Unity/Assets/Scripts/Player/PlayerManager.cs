@@ -53,4 +53,9 @@ public class PlayerManager : MonoBehaviour
         _playerLocomotion.hasSpeedBoost = boost;
         speedPowerupModifier = speedMod;
     }
+
+    public void HandleDoubleJumpEffect(bool effect)
+    {
+        _playerLocomotion.hasDoubleJumpEffect = effect;
+    }
 }
