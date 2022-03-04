@@ -2609,6 +2609,7 @@ MonoBehaviour:
   camHorizontalInput: 0
   sprintInput: 0
   jumpInput: 0
+  attackInput: 0
 --- !u!114 &1573172652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2626,15 +2627,15 @@ MonoBehaviour:
   isGrounded: 0
   isJumping: 0
   rotationSpeed: 15
-  walkingSpeed: 1.5
-  runningSpeed: 7
-  sprintingSpeed: 7
+  walkingSpeed: 1.1
+  runningSpeed: 4
+  sprintingSpeed: 6
   gravityIntenstity: -10
   jumpHeight: 3
   jumpSpeedModifier: 0.3
   inAirTimer: 0
-  jumpOffVelocity: 0
-  fallSpeed: 0
+  jumpOffVelocity: 2
+  fallSpeed: 40
   raycastHeightOffset: 0.5
   groundLayer:
     serializedVersion: 2
@@ -2710,6 +2711,19 @@ MonoBehaviour:
   camRotationSpeed: 0.5
   minVerticalAngle: 10
   maxVerticalAngle: 80
+--- !u!114 &1573172658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573172648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9949cc3660b55419d3e60087cfe57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
 --- !u!1 &1628202809
 GameObject:
   m_ObjectHideFlags: 0

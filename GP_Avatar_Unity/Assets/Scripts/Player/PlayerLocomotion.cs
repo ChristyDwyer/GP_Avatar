@@ -8,6 +8,7 @@ public class PlayerLocomotion : MonoBehaviour
     private PlayerManager _playerManager;
     private InputManager _inputManager;
     private AnimatorManager _animatorManager;
+    private PlayerActions _playerActions;
     private int _jumpingAnimBool;
     
     public Camera cameraObject;
@@ -43,6 +44,7 @@ public class PlayerLocomotion : MonoBehaviour
         _playerManager = GetComponent<PlayerManager>();
         _inputManager = GetComponent<InputManager>();
         _animatorManager = GetComponent<AnimatorManager>();
+        _playerActions = GetComponent<PlayerActions>();
         _playerRigidBody = GetComponent<Rigidbody>();
         cameraObject = Camera.main;
         _cameraTarget = GameObject.FindGameObjectWithTag("Camera Target");
@@ -57,9 +59,8 @@ public class PlayerLocomotion : MonoBehaviour
         if (!_playerManager.isInteracting)
         {
             HandleMovement();
-            
         }
-        
+
         HandleRotation();
         _cameraTarget.transform.position = transform.position + new Vector3(0, 1.6f, 0);
     }
@@ -102,7 +103,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleRotation()
     {
-        if(isJumping)
+        if(isJumping || _playerActions.isAttacking)
             return;
         
         Vector3 targetDirection = Vector3.zero;
@@ -170,7 +171,7 @@ public class PlayerLocomotion : MonoBehaviour
 
         if (isGrounded && !isJumping)
         {
-            if (_playerManager.isInteracting || _inputManager.moveAmount > 0)
+            if ((_playerManager.isInteracting || _inputManager.moveAmount > 0) && !_playerActions.isAttacking)
             {
                 transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime / 0.1f);
             }
@@ -178,6 +179,11 @@ public class PlayerLocomotion : MonoBehaviour
             {
                 transform.position = targetPosition;
             }
+        }
+        
+        if (_playerActions.isAttacking)
+        {
+            _playerRigidBody.velocity = Vector3.zero;
         }
     }
 
