@@ -16,6 +16,7 @@ public class PlayerLocomotion : MonoBehaviour
     public bool isSprinting;
     public bool isGrounded;
     public bool isJumping;
+    public bool hasSpeedBoost;
     
     [Header("Movement")]
     public float rotationSpeed = 10;
@@ -96,7 +97,7 @@ public class PlayerLocomotion : MonoBehaviour
 
         if (isGrounded && !isJumping)
         {
-            Vector3 movementVelocity = _moveDirection;
+            Vector3 movementVelocity = hasSpeedBoost ? _moveDirection * _playerManager.speedPowerupModifier : _moveDirection;
             _playerRigidBody.velocity = movementVelocity;
         }
     }

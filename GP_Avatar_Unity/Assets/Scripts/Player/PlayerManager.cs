@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour
     private int _interacting;
     private int _jumping;
     private int _attacking;
+
+    public float speedPowerupModifier;
     
     private void Awake()
     {
@@ -44,5 +46,11 @@ public class PlayerManager : MonoBehaviour
         isInteracting = _animator.GetBool(_interacting);
         _playerLocomotion.isJumping = _animator.GetBool(_jumping);
         _playerActions.isAttacking = _animator.GetBool(_attacking);
+    }
+    
+    public void HandleSpeedBoost(bool boost, float speedMod)
+    {
+        _playerLocomotion.hasSpeedBoost = boost;
+        speedPowerupModifier = speedMod;
     }
 }
