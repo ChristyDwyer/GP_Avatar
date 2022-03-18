@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    private PlayerManager _playerManager;
     private PlayerInputActions _playerControls;
     private PlayerLocomotion _playerLocomotion;
     private AnimatorManager _animatorManager;
@@ -21,10 +22,11 @@ public class InputManager : MonoBehaviour
     
     public bool sprintInput;
     public bool jumpInput;
-    public bool attackInput;
+    public bool contextualInput;
 
     private void Awake()
     {
+        _playerManager = GetComponent<PlayerManager>();
         _playerLocomotion = GetComponent<PlayerLocomotion>();
         _animatorManager = GetComponent<AnimatorManager>();
         _playerActions = GetComponent<PlayerActions>();
@@ -44,7 +46,7 @@ public class InputManager : MonoBehaviour
             
             _playerControls.Player.Jump.performed += context => jumpInput = true;
 
-            _playerControls.Player.Attack.performed += context => attackInput = true;
+            _playerControls.Player.ContextAction.performed += context => contextualInput = true;
         }
 
         _playerControls.Enable();
@@ -61,7 +63,7 @@ public class InputManager : MonoBehaviour
         HandleSprintingInput();
         HandleCameraInput();
         HandleJumpInput();
-        HandleAttackInput();
+        HandleContextInput();
     }
 
     private void HandleMovementInput()
@@ -69,7 +71,7 @@ public class InputManager : MonoBehaviour
         verticalInput = movementInput.y;
         horizontalInput = movementInput.x;
 
-        moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
+        moveAmount = _playerManager.inCutscene ? 0f : Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
         _animatorManager.UpdateAnimatorValues(0, moveAmount,
             _playerLocomotion.isSprinting, _playerLocomotion.isGrounded);
     }
@@ -94,12 +96,34 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void HandleAttackInput()
+    private void HandleContextInput()
     {
-        if (attackInput)
+        if (contextualInput)
         {
-            attackInput = false;
-            _playerActions.HandleAttack();
+            contextualInput = false;
+
+            if (_playerManager.inInteractRange)
+            {
+                _playerActions.HandleObjectInteract();
+            }
+
+            else
+            {
+                _playerActions.HandleAttack();
+            }
         }
+    }
+
+    public void HandleCutsceneStart()
+    {
+        moveAmount = 0;
+        _playerControls.Disable();
+        _playerManager.inCutscene = true;
+    }
+
+    public void HandleCutsceneEnd()
+    {
+        _playerControls.Enable();
+        _playerManager.inCutscene = false;
     }
 }

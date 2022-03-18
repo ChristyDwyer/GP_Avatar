@@ -9,7 +9,9 @@ public class PlayerActions : MonoBehaviour
     private AnimatorManager _animatorManager;
 
     public bool isAttacking;
+    public bool isInteractingWithObject;
     private int _attackingAnimBool;
+    private int _objectInteractionAnimBool;
 
     private void Awake()
     {
@@ -17,6 +19,7 @@ public class PlayerActions : MonoBehaviour
         _animatorManager = GetComponent<AnimatorManager>();
         
         _attackingAnimBool = Animator.StringToHash("isAttacking");
+        _objectInteractionAnimBool = Animator.StringToHash("isInteractingWithObject");
     }
 
     public void HandleAttack()
@@ -25,6 +28,17 @@ public class PlayerActions : MonoBehaviour
         {
             _animatorManager.animator.SetBool(_attackingAnimBool, true);
             _animatorManager.PlayTargetAnimation("Attack", true);
+        }
+    }
+    
+    public void HandleObjectInteract()
+    {
+        if(!_playerManager.isInteracting && !_animatorManager.animator.GetBool(_objectInteractionAnimBool))
+        {
+            _animatorManager.animator.SetBool(_objectInteractionAnimBool, true);
+            _animatorManager.PlayTargetAnimation("Object Interaction", true);
+
+            _playerManager.nearestInteractableInRange.GetComponent<InteractionManager>().Interact();
         }
     }
 }

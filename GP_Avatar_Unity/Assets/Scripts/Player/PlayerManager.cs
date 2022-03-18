@@ -10,11 +10,15 @@ public class PlayerManager : MonoBehaviour
     private PlayerActions _playerActions;
     private CameraMovement _cameraMovement;
     private Animator _animator;
-    
+
+    public bool inCutscene;
+    public bool inInteractRange;
+    public GameObject nearestInteractableInRange;
     public bool isInteracting;
     private int _interacting;
     private int _jumping;
     private int _attacking;
+    private int _interactingWithObject;
 
     public float speedPowerupModifier;
     
@@ -29,6 +33,7 @@ public class PlayerManager : MonoBehaviour
         _interacting = Animator.StringToHash("isInteracting");
         _jumping = Animator.StringToHash("isJumping");
         _attacking = Animator.StringToHash("isAttacking");
+        _interactingWithObject = Animator.StringToHash("isInteractingWithObject");
     }
 
     private void Update()
@@ -46,6 +51,7 @@ public class PlayerManager : MonoBehaviour
         isInteracting = _animator.GetBool(_interacting);
         _playerLocomotion.isJumping = _animator.GetBool(_jumping);
         _playerActions.isAttacking = _animator.GetBool(_attacking);
+        _playerActions.isInteractingWithObject = _animator.GetBool(_interactingWithObject);
     }
     
     public void HandleSpeedBoost(bool boost, float speedMod)
@@ -57,5 +63,12 @@ public class PlayerManager : MonoBehaviour
     public void HandleDoubleJumpEffect(bool effect)
     {
         _playerLocomotion.hasDoubleJumpEffect = effect;
+    }
+
+    public void ToggleInInteractRange(GameObject interactable)
+    {
+        inInteractRange = !inInteractRange;
+
+        nearestInteractableInRange = nearestInteractableInRange == null ? interactable : null;
     }
 }

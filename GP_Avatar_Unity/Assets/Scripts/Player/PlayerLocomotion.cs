@@ -70,9 +70,6 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleMovement()
     {
-        //if (isJumping)
-        //    return;
-
         Transform camTransform = cameraObject.transform;
         _moveDirection = camTransform.forward * _inputManager.verticalInput
                 + camTransform.right * _inputManager.horizontalInput;
@@ -106,7 +103,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleRotation()
     {
-        if(isJumping || _playerActions.isAttacking)
+        if(isJumping || _playerActions.isAttacking || _playerActions.isInteractingWithObject)
             return;
         
         Vector3 targetDirection = Vector3.zero;
@@ -175,7 +172,8 @@ public class PlayerLocomotion : MonoBehaviour
 
         if (isGrounded && !isJumping)
         {
-            if ((_playerManager.isInteracting || _inputManager.moveAmount > 0) && !_playerActions.isAttacking)
+            if ((_playerManager.isInteracting || _inputManager.moveAmount > 0)
+                && !_playerActions.isAttacking && !_playerActions.isInteractingWithObject)
             {
                 transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime / 0.1f);
             }
@@ -185,7 +183,7 @@ public class PlayerLocomotion : MonoBehaviour
             }
         }
         
-        if (_playerActions.isAttacking)
+        if (_playerActions.isAttacking || _playerActions.isInteractingWithObject)
         {
             _playerRigidBody.velocity = Vector3.zero;
         }

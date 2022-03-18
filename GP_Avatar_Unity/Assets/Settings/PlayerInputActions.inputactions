@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Attack",
+                    "name": "Context Action",
                     "type": "Button",
                     "id": "e71afd60-60cc-45c3-8f79-db015d94329f",
                     "expectedControlType": "Button",
@@ -274,7 +274,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Attack",
+                    "action": "Context Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -285,7 +285,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Attack",
+                    "action": "Context Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
