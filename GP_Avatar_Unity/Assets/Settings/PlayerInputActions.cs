@@ -57,6 +57,22 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Direction Snap"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""9d39503b-e9a9-4b05-aaca-994cedf30a51"",
+                    ""expectedControlType"": ""Dpad"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Lock On"",
+                    ""type"": ""Button"",
+                    ""id"": ""d307fb56-7d22-4bb6-9b4a-7b1f52c17ca1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -299,6 +315,138 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Context Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""D-Pad"",
+                    ""id"": ""fe9859e3-32de-4323-ad70-c3df42bcd4cf"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction Snap"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""66488d37-5aa0-4716-8e7b-faa2a7543849"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Direction Snap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""02a9a1e4-a32a-4b36-916a-9f8723be9c0e"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Direction Snap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""2edb859e-d61c-45a6-ab69-982c0ffe85a6"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Direction Snap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""d638b5b5-4c95-4bc3-a61f-335edb0d2d01"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Direction Snap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""fa0f9efd-9caa-4002-983e-2a4e2a52d6cd"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction Snap"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""7edfdcba-b4fd-45b3-bf65-d735fbf011a3"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Direction Snap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""04d12988-01a8-4f6a-b63d-b0734f5d69a2"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Direction Snap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""d31b6644-63d5-45b2-be5e-3ff068cbd085"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Direction Snap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""aa694015-bd69-46b7-9878-5b8fabece7ce"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Direction Snap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f90eb586-e3ed-46b1-a28f-5eba7c9a4840"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Lock On"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a4fe7a4-c430-4582-88da-618da1f68828"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Lock On"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -881,6 +1029,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_ContextAction = m_Player.FindAction("Context Action", throwIfNotFound: true);
+        m_Player_DirectionSnap = m_Player.FindAction("Direction Snap", throwIfNotFound: true);
+        m_Player_LockOn = m_Player.FindAction("Lock On", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -947,6 +1097,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_ContextAction;
+    private readonly InputAction m_Player_DirectionSnap;
+    private readonly InputAction m_Player_LockOn;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -956,6 +1108,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @ContextAction => m_Wrapper.m_Player_ContextAction;
+        public InputAction @DirectionSnap => m_Wrapper.m_Player_DirectionSnap;
+        public InputAction @LockOn => m_Wrapper.m_Player_LockOn;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -980,6 +1134,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @ContextAction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnContextAction;
                 @ContextAction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnContextAction;
                 @ContextAction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnContextAction;
+                @DirectionSnap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDirectionSnap;
+                @DirectionSnap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDirectionSnap;
+                @DirectionSnap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDirectionSnap;
+                @LockOn.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLockOn;
+                @LockOn.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLockOn;
+                @LockOn.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLockOn;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -999,6 +1159,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @ContextAction.started += instance.OnContextAction;
                 @ContextAction.performed += instance.OnContextAction;
                 @ContextAction.canceled += instance.OnContextAction;
+                @DirectionSnap.started += instance.OnDirectionSnap;
+                @DirectionSnap.performed += instance.OnDirectionSnap;
+                @DirectionSnap.canceled += instance.OnDirectionSnap;
+                @LockOn.started += instance.OnLockOn;
+                @LockOn.performed += instance.OnLockOn;
+                @LockOn.canceled += instance.OnLockOn;
             }
         }
     }
@@ -1160,6 +1326,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnContextAction(InputAction.CallbackContext context);
+        void OnDirectionSnap(InputAction.CallbackContext context);
+        void OnLockOn(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

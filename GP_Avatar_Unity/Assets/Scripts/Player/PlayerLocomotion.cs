@@ -22,6 +22,7 @@ public class PlayerLocomotion : MonoBehaviour
     
     [Header("Movement")]
     public float rotationSpeed = 10;
+    public float lockOnRotationModifier = 0.1f;
     public float walkingSpeed = 1.5f;
     public float runningSpeed = 5;
     public float sprintingSpeed = 7;
@@ -108,22 +109,37 @@ public class PlayerLocomotion : MonoBehaviour
         
         Vector3 targetDirection = Vector3.zero;
 
-        targetDirection = cameraObject.transform.forward * _inputManager.verticalInput;
-        targetDirection += cameraObject.transform.right * _inputManager.horizontalInput;
-        targetDirection.Normalize();
-        targetDirection.y = 0;
+        if (_playerManager.isLockedOn && _playerManager.lockOnTarget != null)
+        {
+            targetDirection = targetDirection = cameraObject.transform.forward;
+            targetDirection.Normalize();
+            targetDirection.y = 0;
+        }
+
+        else
+        {
+            targetDirection = cameraObject.transform.forward * _inputManager.verticalInput;
+            targetDirection += cameraObject.transform.right * _inputManager.horizontalInput;
+            targetDirection.Normalize();
+            targetDirection.y = 0;
+        }
 
         if (targetDirection == Vector3.zero)
-            targetDirection = transform.forward;
+                targetDirection = transform.forward;
+        
 
-                
         float currentRotationSpeed = rotationSpeed;
         
         if (!isGrounded)
         {
             currentRotationSpeed *= jumpSpeedModifier;
         }
-        
+
+        if (_playerManager.isLockedOn && _playerManager.lockOnTarget == null)
+        {
+            currentRotationSpeed *= lockOnRotationModifier;
+        }
+
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
         Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, currentRotationSpeed * Time.deltaTime);
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -23,6 +24,11 @@ public class InputManager : MonoBehaviour
     public bool sprintInput;
     public bool jumpInput;
     public bool contextualInput;
+    public bool lockOnInput;
+    
+    public Vector2 directionSnap;
+    public Vector2Int camSnapInput;
+
 
     private void Awake()
     {
@@ -47,6 +53,11 @@ public class InputManager : MonoBehaviour
             _playerControls.Player.Jump.performed += context => jumpInput = true;
 
             _playerControls.Player.ContextAction.performed += context => contextualInput = true;
+            
+            _playerControls.Player.DirectionSnap.performed += context => directionSnap = context.ReadValue<Vector2>();
+            
+            _playerControls.Player.LockOn.performed += context => lockOnInput = true;
+            _playerControls.Player.LockOn.canceled += context => lockOnInput = false;
         }
 
         _playerControls.Enable();
@@ -64,6 +75,7 @@ public class InputManager : MonoBehaviour
         HandleCameraInput();
         HandleJumpInput();
         HandleContextInput();
+        HandleLockOnInput();
     }
 
     private void HandleMovementInput()
@@ -80,6 +92,9 @@ public class InputManager : MonoBehaviour
     {
         camVerticalInput = cameraInput.y;
         camHorizontalInput = cameraInput.x;
+        
+        camSnapInput.y = (int)directionSnap.y;
+        camSnapInput.x = (int)directionSnap.x;
     }
 
     private void HandleSprintingInput()
@@ -111,6 +126,16 @@ public class InputManager : MonoBehaviour
             {
                 _playerActions.HandleAttack();
             }
+        }
+    }
+
+    private void HandleLockOnInput()
+    {
+        _playerManager.isLockedOn = lockOnInput;
+
+        if (!_playerManager.isLockedOn)
+        {
+            _playerManager.lockOnTarget = null;
         }
     }
 
