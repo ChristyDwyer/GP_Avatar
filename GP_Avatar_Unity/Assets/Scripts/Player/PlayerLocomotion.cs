@@ -111,7 +111,7 @@ public class PlayerLocomotion : MonoBehaviour
 
         if (_playerManager.isLockedOn && _playerManager.lockOnTarget != null)
         {
-            targetDirection = targetDirection = cameraObject.transform.forward;
+            targetDirection = cameraObject.transform.forward;
             targetDirection.Normalize();
             targetDirection.y = 0;
         }
